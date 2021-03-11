@@ -6,23 +6,7 @@ import {main$, stop, start, reset, wait} from "../observers/timerObservable";
 
 export const Timer = () => {
 
-    const [work, setWork] = useState(false);
     const seconds = useObservable(main$);
-
-    const handleStop = () => {
-        stop();
-        setWork(false);
-    }
-
-    const handleStart = () => {
-        start();
-        setWork(true)
-    }
-
-    const handleWait = () => {
-        wait();
-        setWork(false);
-    }
 
     return (
         <div className="timer">
@@ -34,17 +18,10 @@ export const Timer = () => {
                 <Number number={seconds % 60}/>
             </div>
             <div className="button-block">
-                {/*<button onClick={work ? handleStop : handleStart}>*/}
-                {/*    {work ? "Stop" : "Start"}*/}
-                {/*</button>*/}
                 <button onClick={start}>Start</button>
                 <button onClick={stop}>Stop</button>
-                <button onClick={handleWait}>
-                    Wait
-                </button>
-                <button onClick={reset}>
-                    Reset
-                </button>
+                <button onClick={wait}>Wait</button>
+                <button onClick={reset}>Reset</button>
             </div>
         </div>
     )
